@@ -10,7 +10,7 @@ class Solution:
             test_str += s[i]
         d[test_str] += 1
         for i in range(10, len(s)):
-            test_str = test_str[1:] + s[i]  #this should give TLE due to slicing used
+            test_str = test_str[1:] + s[i]
             d[test_str] += 1
         ans = []
         for i in d:
