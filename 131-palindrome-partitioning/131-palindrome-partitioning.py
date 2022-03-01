@@ -1,5 +1,6 @@
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
+        # partition the string -> check if the left half is a palindrome -> yes: continue in the right half -> no: skip iteration
         def solve(s):
             arr = []
             if not s: return [arr]
