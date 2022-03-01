@@ -1,7 +1,6 @@
 class Solution:
-    ans = []
+    @cache
     def partition(self, s: str) -> List[List[str]]:
-        Solution.ans = []
         def solve(s):
             arr = []
             if not s: return [arr]
