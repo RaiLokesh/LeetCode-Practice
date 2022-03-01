@@ -1,5 +1,4 @@
 class Solution:
-    @cache
     def partition(self, s: str) -> List[List[str]]:
         def solve(s):
             arr = []
