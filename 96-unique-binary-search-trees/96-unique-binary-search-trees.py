@@ -13,4 +13,4 @@ class Solution:
                 lvl_sum += l*r
             d[(i, j)] = lvl_sum
             return lvl_sum
-        return solve(0, n-1)
+        return solve(1, n)
