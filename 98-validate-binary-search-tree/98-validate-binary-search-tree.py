@@ -5,18 +5,18 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    array = []
+    prev = None
     ans = True
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         # -> the inorder traversal of a BST is sorted
-        Solution.array = []
+        Solution.prev = None
         Solution.ans = True
         def traverse(ptr):
             if ptr.left:
                 traverse(ptr.left)
-            if Solution.array and Solution.array[-1] >= ptr.val:
+            if Solution.prev != None and Solution.prev >= ptr.val:
                 Solution.ans = False
-            Solution.array.append(ptr.val)
+            Solution.prev = ptr.val
             if ptr.right:
                 traverse(ptr.right)
         traverse(root)
