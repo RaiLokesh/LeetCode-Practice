@@ -48,7 +48,6 @@ class Solution:
                     if (x[0], x[1]+2) not in visited:
                         q.append((x[0], x[1]+2))
                         visited.add((x[0], x[1]+2))
-            
             if not q:
                 return False
                 break
