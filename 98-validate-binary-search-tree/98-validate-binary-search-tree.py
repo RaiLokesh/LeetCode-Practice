@@ -6,14 +6,18 @@
 #         self.right = right
 class Solution:
     array = []
+    ans = True
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         # -> the inorder traversal of a BST is sorted
         Solution.array = []
+        Solution.ans = True
         def traverse(ptr):
             if ptr.left:
                 traverse(ptr.left)
+            if Solution.array and Solution.array[-1] >= ptr.val:
+                Solution.ans = False
             Solution.array.append(ptr.val)
             if ptr.right:
                 traverse(ptr.right)
         traverse(root)
-        return Solution.array == sorted(Solution.array) and len(Solution.array) == len(set(Solution.array))
+        return Solution.ans
