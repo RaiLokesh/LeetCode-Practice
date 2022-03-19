@@ -1,24 +1,46 @@
 from collections import deque as que
 from string import ascii_lowercase as alphabets
 class Solution:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
-        
-        # -> create graph like bfs using queues and visited sets
-        
+    graph = {}
+    ans = 0
+    def traverse_graph(self, beginWord, endWord, pos):
+        if beginWord == endWord:
+            Solution.ans = pos
+            return -1
+        if beginWord not in Solution.graph: return 0
+        for i in Solution.graph[beginWord]:
+            if self.traverse_graph(i, endWord, pos + 1) == -1:
+                return -1
+        return 0
+    
+    def create_graph(self, beginWord, endWord, wordList):
+        graph = {}
         q = que([beginWord])
-        q_pos = que([1])
-        wordList = set(wordList)  # -> only optimization needed
+        visited = {beginWord}
         while q:
             curr = q.popleft()
-            curr_pos = q_pos.popleft()
             for i in alphabets:
+                temp = [j for j in curr]
                 for j in range(len(curr)):
-                    st = curr[:j] + i + curr[j+1:]
-                    if st in wordList:
-                        if st == endWord: return curr_pos+1
+                    prev = temp[j]
+                    temp[j] = i
+                    st = ''.join(temp)
+                    if st in wordList and st not in visited:
+                        visited.add(st)
+                        if curr not in graph: graph[curr] = []
+                        graph[curr].append(st)
                         q.append(st)
-                        q_pos.append(curr_pos+1)
-                        wordList.remove(st)
-        return 0
+                    temp[j] = prev
+        Solution.graph = graph
         
-        
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        # -> reinitilize values for new objects
+        Solution.graph = {}
+        Solution.ans = 0
+        wordList = set(wordList) #-> optimize
+        # -> create graph
+        self.create_graph(beginWord, endWord, wordList)
+        # -> traverse graph
+        self.traverse_graph(beginWord, endWord, 1)
+        # -> return ans
+        return Solution.ans
