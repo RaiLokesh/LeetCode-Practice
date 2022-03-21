@@ -15,7 +15,7 @@ class Solution:
         pos = m + n - 1 # marks the last available position to add values
         
         while pos >= 0:
-            #print(pos, i, j)
+            
             if i >= 0 and nums1[i] > nums2[j]:
                 nums1[pos] = nums1[i]
                 i -= 1
