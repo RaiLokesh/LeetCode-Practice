@@ -1,17 +1,18 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+        l = [0]*len(nums)
+        i = j = 1
         count = 1
-        check = nums[0]
-        for i in range(1, len(nums)):
-            if nums[i]!=check:
-                count = 1
-                check = nums[i]
+        while i < len(nums):
+            if nums[i] == nums[j-1]:
+                if count < 2:
+                    nums[j] = nums[i]
+                    j += 1
+                    count += 1
             else:
-                count += 1
-                if count > 2:
-                    nums[i] = float('inf')
-        nums.sort()
-        for i in range(len(nums)):
-            if nums[i] == float('inf'):
-                return i
-        
+                nums[j] = nums[i]
+                j += 1
+                count = 1
+            i += 1
+        return j
+                
