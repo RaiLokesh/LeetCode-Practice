@@ -11,7 +11,6 @@ class Solution:
                 temp = []
                 f_ans = 0
         if temp: l.append(temp)
-        if len(l) > 1: f_ans = 0
         for nums in l:
             left_prod = right_prod = 1
             ans = nums[0]
