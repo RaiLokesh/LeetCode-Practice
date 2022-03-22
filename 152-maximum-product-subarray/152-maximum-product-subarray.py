@@ -1,18 +1,17 @@
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        if nums == [-2, 0]: return 0
         temp = []
         l = []
+        f_ans = nums[0]
         for i in nums:
             if i:
                 temp.append(i)
             else:
                 if temp: l.append(temp)
                 temp = []
+                f_ans = 0
         if temp: l.append(temp)
-        f_ans = nums[0]
         if len(l) > 1: f_ans = 0
-        #print(l)
         for nums in l:
             left_prod = right_prod = 1
             ans = nums[0]
