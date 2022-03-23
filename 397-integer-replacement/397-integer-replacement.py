@@ -1,4 +1,5 @@
 class Solution:
+    @cache
     def solve(self, n, count):
         if n == 1:
             return count
