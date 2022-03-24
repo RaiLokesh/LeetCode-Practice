@@ -8,7 +8,7 @@ class Solution:
     
     @cache
     def solve(self, n):
-        if n == 0: return []
+        if n%2 == 0: return []
         if n == 1: return [TreeNode()]
         curr_root = []
         for left in range(n):
