@@ -7,6 +7,7 @@
 
 class Solution:
     ans = None
+    @cache
     def traverse(self, ptr1, ptr2, target):
         if ptr1 == target:
             Solution.ans = ptr2
