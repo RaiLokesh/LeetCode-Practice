@@ -1,5 +1,7 @@
 class Solution:
     grid = []
+    
+    @cache
     def dfs(self, i, j):
         Solution.grid[i][j] = 0
         if i+1 < len(Solution.grid) and Solution.grid[i+1][j] == 1:
