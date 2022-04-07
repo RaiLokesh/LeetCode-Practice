@@ -22,8 +22,6 @@ class Solution:
                     i = mid + 1
                 elif l[mid] < l[i]:
                     j = mid - 1
-                else:
-                    print("Some edge case misses!")
             if target < l[0]:
                 start = pp
             else:
