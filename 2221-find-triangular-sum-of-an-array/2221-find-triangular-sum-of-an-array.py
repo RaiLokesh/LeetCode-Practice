@@ -4,5 +4,5 @@ class Solution:
             arr = []
             for i in range(1, len(nums)):
                 arr.append((nums[i]+nums[i-1])%10)
-            nums = arr[:]
+            nums = arr
         return nums[0]
