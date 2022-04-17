@@ -23,5 +23,6 @@ class Solution:
         
     def increasingBST(self, root: TreeNode) -> TreeNode:
         Solution.head = None
+        Solution.pt = None
         self.traverse(root)
         return Solution.head
