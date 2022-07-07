@@ -1,22 +1,23 @@
-from bisect import bisect_right as bl
+import bisect
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
-        #logic: start from end, find the first decreasing element; sort traversed elem, swap the first decreasing element with its immediate next successer in the sorted traversed elems.
-        for i in range(len(nums)-2, -1, -1):
-            if nums[i] < nums[i+1]:
-                x = nums[:i+1]
-                y = sorted(nums[i+1:])
-                t = x[-1]
-                x[-1] = y[bl(y, x[-1])]
-                y[bl(y, t)] = t
-                ans = x + y
-                for i in range(len(nums)): nums[i] = ans[i]
-                return nums
-        nums.sort()
-        return nums
-            
-            
-            
+        for i in range(len(nums)-1, 0, -1):
+            if nums[i] > nums[i-1]:
+                pivot = nums[i-1]
+                dontChangeList = nums[:i-1]
+                check = 0
+                for j in range(len(nums[i-1:])-1, -1, -1):
+                    if nums[i-1:][j] > pivot:
+                        check = i+j-1; break
+                sort = sorted(nums[i-1:check])
+                k = dontChangeList + [nums[check]] + sorted(nums[check+1:]) + sort
+                for i in range(len(k)):
+                    nums[i] = k[i]
+                break
+        else:
+            k = nums[::-1]
+            for i in range(len(nums)):
+                nums[i] = k[i]
