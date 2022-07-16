@@ -3,7 +3,7 @@ from collections import defaultdict as dd
 l = []
 d = dd(lambda:0)
 i = 1
-while i**2 <= 10001:
+while i**2 <= 10000:
     l.append(i**2)
     i += 1
 def solve(sm):
@@ -18,7 +18,7 @@ def solve(sm):
         d[sm] = ct
         return ct
 
-solve(10001)
+solve(10000)
 
 class Solution:
     def numSquares(self, n: int) -> int:
